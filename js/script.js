@@ -24,7 +24,11 @@ const app = new Vue({
                 url: "https://alam-97-boolean-zoom.netlify.app/"
             }
         ],
+
         imageIndex: 0
+    },
+    mounted() {
+        this.autoplay()
     },
     methods: {
         nextImage: function() {
@@ -38,6 +42,20 @@ const app = new Vue({
             if (this.imageIndex == -1) {
                 this.imageIndex = this.images.length - 1;
             }
+        },
+        changeImage: function(index) {
+            this.imageIndex = index;
+        },
+        autoplay: function() {
+            setInterval(
+                function() {
+                    this.imageIndex = 0;
+                    if (this.imageIndex >= 5) {
+                        this.imageIndex++;
+                    }
+                }
+            ,1000); 
         }
     },
+    
 })

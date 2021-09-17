@@ -29,7 +29,7 @@
                             <a :href="images[imageIndex].url" target="blank" >
                                 <div class="visit">VISITA</div>
                             </a>
-                            <i class="far fa-circle" v-for="(image,index) in images" :class="imageIndex == index ? 'active' : null"></i>
+                            <i class="far fa-circle" v-for="(image,index) in images" :class="imageIndex == index ? 'active' : null" @click="changeImage(index)"></i>
                         </div>
                     </div>
                     <i class="fas fa-chevron-circle-right" @click="nextImage()"></i>
