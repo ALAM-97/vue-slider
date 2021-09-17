@@ -10,11 +10,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400&display=swap"
+        rel="stylesheet">
     <title>Vue Slider</title>
 </head>
     <body>
         <div id="root">
-
+            <h1>SLIDER</h1>
+                <div class="images">
+                    <i class="fas fa-chevron-circle-left" @click="previousImage()"></i>
+                    <div class="slider">
+                        <img :src="images[imageIndex].img" alt="">
+                        <div class="bullets">
+                            <a :href="images[imageIndex].url" target="blank" >
+                                <div class="visit">VISITA</div>
+                            </a>
+                            <i class="far fa-circle" v-for="(image,index) in images" :class="imageIndex == index ? 'active' : null"></i>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-circle-right" @click="nextImage()"></i>
+                </div>
         </div>
         
 
