@@ -38,7 +38,7 @@ img {
 }
 .fa-chevron-circle-left:hover,
 .fa-chevron-circle-right:hover {
-    opacity: .7;
+    opacity: 1;
 }
 .fa-chevron-circle-left {
     position: relative;

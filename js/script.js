@@ -25,20 +25,18 @@ const app = new Vue({
             }
         ],
 
-        imageIndex: 0
-    },
-    mounted() {
-        this.autoplay()
+        imageIndex: 0,
+        autoplay: null,
     },
     methods: {
         nextImage: function() {
-            this.imageIndex++
+            this.imageIndex++;
             if (this.imageIndex >= this.images.length) {
                 this.imageIndex = 0;
             }
         },
         previousImage: function() {
-            this.imageIndex--
+            this.imageIndex--;
             if (this.imageIndex == -1) {
                 this.imageIndex = this.images.length - 1;
             }
@@ -46,16 +44,26 @@ const app = new Vue({
         changeImage: function(index) {
             this.imageIndex = index;
         },
-        autoplay: function() {
-            setInterval(
-                function() {
-                    this.imageIndex = 0;
-                    if (this.imageIndex >= 5) {
-                        this.imageIndex++;
-                    }
-                }
-            ,1000); 
+        startAutoplay: function() {
+            this.autoplay = setInterval(this.nextImage, 3000);
+        },
+        stopAutoplay: function() {
+            if(this.autoplay != null) {
+                clearInterval(this.autoplay);
+            }
         }
     },
-    
-})
+    mounted: function () {
+        this.startAutoplay();
+
+        document.addEventListener("keydown",
+            (event) => {
+                if(event.key == "ArrowRight") {
+                    this.nextImage();
+                } else if (event.key == "ArrowLeft") {
+                    this.previousImage();
+                } 
+            }
+        );
+    }
+});

@@ -21,7 +21,7 @@
     <body>
         <div id="root">
             <h1>SLIDER</h1>
-                <div class="images">
+                <div class="images"  @mouseover="stopAutoplay()" @mouseleave="startAutoplay()">
                     <i class="fas fa-chevron-circle-left" @click="previousImage()"></i>
                     <div class="slider">
                         <img :src="images[imageIndex].img" alt="">
@@ -29,10 +29,10 @@
                             <a :href="images[imageIndex].url" target="blank" >
                                 <div class="visit">VISITA</div>
                             </a>
-                            <i class="far fa-circle" v-for="(image,index) in images" :class="imageIndex == index ? 'active' : null" @click="changeImage(index)"></i>
+                            <i class="far fa-circle" v-for="(image,index) in images" :class="imageIndex == index ? 'active' : null" @click="changeImage(index)" @click="stopImage()"></i>
                         </div>
                     </div>
-                    <i class="fas fa-chevron-circle-right" @click="nextImage()"></i>
+                    <i class="fas fa-chevron-circle-right" @click="nextImage()" @click="stopImage()"></i>
                 </div>
         </div>
         
